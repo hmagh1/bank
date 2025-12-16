@@ -2,6 +2,7 @@
 🔐 Auth
 POST   /api/auth/login
 POST   /api/auth/register-client
+POST /api/auth/register-self(client)
 
 👤 User
 GET    /api/users/me

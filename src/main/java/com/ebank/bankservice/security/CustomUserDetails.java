@@ -24,19 +24,35 @@ public class CustomUserDetails implements UserDetails {
         this.authorities = authorities;
     }
 
+    // =========================
+    // CUSTOM HELPERS
+    // =========================
     public boolean isFirstLogin() {
         return firstLogin;
     }
 
-    // ✅ NOUVEAU – utile partout
     public boolean hasRole(String role) {
         return authorities.stream()
                 .anyMatch(a -> a.getAuthority().equals(role));
     }
 
-    @Override public Collection<? extends GrantedAuthority> getAuthorities() { return authorities; }
-    @Override public String getPassword() { return password; }
-    @Override public String getUsername() { return username; }
+    // =========================
+    // USERDETAILS
+    // =========================
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public String getUsername() {
+        return username; // email
+    }
 
     @Override public boolean isAccountNonExpired() { return true; }
     @Override public boolean isAccountNonLocked() { return true; }

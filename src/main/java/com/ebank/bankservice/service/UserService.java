@@ -139,4 +139,13 @@ public class UserService {
         return userRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("User not found"));
     }
+    // =========================
+// LIST CLIENTS (AGENT)
+// =========================
+    public Set<User> getAllClients() {
+        return new HashSet<>(
+                userRepository.findByRoles_Name("ROLE_CLIENT")
+        );
+    }
+
 }

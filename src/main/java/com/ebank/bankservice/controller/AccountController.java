@@ -34,9 +34,14 @@ public class AccountController {
             @Valid @RequestBody AmountRequest request
     ) {
         if (user.isFirstLogin()) {
-            throw new RuntimeException("Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités");
+            throw new RuntimeException(
+                    "Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités"
+            );
         }
-        return accountService.deposit(request.getAccountNumber(), request.getAmount());
+        return accountService.deposit(
+                request.getAccountNumber(),
+                request.getAmount()
+        );
     }
 
     // ======================
@@ -49,9 +54,14 @@ public class AccountController {
             @Valid @RequestBody AmountRequest request
     ) {
         if (user.isFirstLogin()) {
-            throw new RuntimeException("Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités");
+            throw new RuntimeException(
+                    "Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités"
+            );
         }
-        return accountService.withdraw(request.getAccountNumber(), request.getAmount());
+        return accountService.withdraw(
+                request.getAccountNumber(),
+                request.getAmount()
+        );
     }
 
     // ======================
@@ -64,15 +74,22 @@ public class AccountController {
             @Valid @RequestBody TransferRequest request
     ) {
         if (user.isFirstLogin()) {
-            throw new RuntimeException("Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités");
+            throw new RuntimeException(
+                    "Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités"
+            );
         }
 
-        accountService.transfer(request.getFromAccount(), request.getToAccount(), request.getAmount());
+        accountService.transfer(
+                request.getFromAccount(),
+                request.getToAccount(),
+                request.getAmount()
+        );
+
         return Map.of("message", "Virement effectué avec succès");
     }
 
     // ======================
-    // HISTORY (CLIENT + AGENT) + PAGINATION ✅
+    // HISTORY (CLIENT + AGENT) + PAGINATION
     // ======================
     @GetMapping("/{accountNumber}/operations")
     @PreAuthorize("hasRole('CLIENT') or hasRole('AGENT')")
@@ -83,7 +100,9 @@ public class AccountController {
             @RequestParam(defaultValue = "10") int size
     ) {
         if (user.isFirstLogin()) {
-            throw new RuntimeException("Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités");
+            throw new RuntimeException(
+                    "Veuillez changer votre mot de passe avant d’accéder aux fonctionnalités"
+            );
         }
         return operationService.history(accountNumber, page, size);
     }

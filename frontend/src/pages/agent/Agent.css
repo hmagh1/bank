@@ -1,0 +1,285 @@
+/* Agent Specific Styles */
+
+/* Expanded Row */
+.expanded-row {
+  background-color: #f8f9fa;
+}
+
+.accounts-details {
+  padding: 1rem;
+}
+
+.accounts-details h4 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.nested-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.expand-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  transition: transform 0.2s;
+}
+
+.expand-button:hover {
+  transform: scale(1.2);
+}
+
+/* Create Client */
+.create-client-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .create-client-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.create-client-card {
+  padding: 2rem;
+}
+
+.create-client-info .card {
+  padding: 1.5rem;
+}
+
+.create-client-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.create-client-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.create-client-info li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #555;
+}
+
+.create-client-info li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: #2196F3;
+  font-weight: bold;
+}
+
+.form-help {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Operations Container */
+.operations-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .operations-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.operations-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.operation-tabs {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  border: none;
+  background: #f8f9fa;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+  background: #e9ecef;
+}
+
+.tab.active {
+  background: white;
+  border-bottom-color: #2196F3;
+  color: #2196F3;
+}
+
+.operations-card form {
+  padding: 2rem;
+}
+
+.operations-info .card {
+  padding: 1.5rem;
+}
+
+.operations-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.operations-info p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.operations-info ul {
+  list-style: none;
+  padding: 0;
+}
+
+.operations-info li {
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: #555;
+}
+
+.operations-info li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #4CAF50;
+}
+
+/* Manage Accounts */
+.manage-accounts-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .manage-accounts-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.manage-card {
+  padding: 2rem;
+}
+
+.search-section {
+  margin-bottom: 1.5rem;
+}
+
+.search-input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-input-group input {
+  flex: 1;
+}
+
+.account-details-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.account-details-section h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.account-details-section p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.manage-info .card {
+  padding: 1.5rem;
+}
+
+.manage-info h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.manage-info p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.manage-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.manage-info li {
+  padding: 0.5rem 0;
+  color: #555;
+}
+
+.status-legend {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.status-legend h4 {
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.status-legend p {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Search Form */
+.search-form {
+  margin-bottom: 0;
+}
+
+/* Button Small */
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* Account Actions */
+.account-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}

@@ -1,70 +1,128 @@
-# Getting Started with Create React App
+# E-Bank Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend React pour l'application bancaire E-Bank.
 
-## Available Scripts
+## 🚀 Démarrage
 
-In the project directory, you can run:
+### Prérequis
 
-### `npm start`
+- Node.js 18+
+- npm 9+
+- Backend Spring Boot en cours d'exécution sur `http://localhost:8080`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Installation
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+cd frontend
+npm install
+npm start
+```
 
-### `npm test`
+L'application sera disponible sur [http://localhost:3000](http://localhost:3000)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 👤 Comptes de test
 
-### `npm run build`
+### Agent (créé par défaut)
+- **Login:** agent@ebank.com
+- **Mot de passe:** agent1234
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Client
+Les clients sont créés par l'agent ou via l'auto-inscription.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📋 Fonctionnalités
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Profil Client
+| Fonctionnalité | Description |
+|----------------|-------------|
+| 📊 Dashboard | Vue d'ensemble des comptes et opérations récentes |
+| 💵 Dépôt | Créditer un compte |
+| 💸 Retrait | Débiter un compte |
+| 🔄 Virement | Transférer entre comptes |
+| 📜 Historique | Consulter les opérations avec pagination |
+| 👤 Profil | Voir/modifier son profil |
 
-### `npm run eject`
+### Profil Agent
+| Fonctionnalité | Description |
+|----------------|-------------|
+| 👥 Clients | Liste des clients avec leurs comptes |
+| ➕ Nouveau Client | Créer un client avec compte |
+| 💰 Opérations | Dépôt/Retrait/Virement |
+| ⚙️ Gestion | Bloquer/Débloquer/Clôturer comptes |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 🏗️ Structure du projet
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+frontend/
+├── public/
+├── src/
+│   ├── components/       # Composants réutilisables
+│   │   ├── Alert.js
+│   │   ├── LoadingSpinner.js
+│   │   ├── Navbar.js
+│   │   ├── Pagination.js
+│   │   └── ProtectedRoute.js
+│   ├── context/          # Context React
+│   │   └── AuthContext.js
+│   ├── pages/            # Pages de l'application
+│   │   ├── auth/         # Authentification
+│   │   ├── client/       # Pages client
+│   │   ├── agent/        # Pages agent
+│   │   └── Profile.js
+│   ├── services/         # Services API
+│   │   ├── api.js
+│   │   ├── authService.js
+│   │   ├── accountService.js
+│   │   ├── dashboardService.js
+│   │   └── userService.js
+│   ├── utils/            # Utilitaires
+│   │   └── formatters.js
+│   ├── App.js
+│   └── index.js
+└── package.json
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🔧 Configuration
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Le frontend est configuré pour communiquer avec le backend sur `http://localhost:8080`.
+Pour modifier cette configuration, éditez `src/services/api.js`.
 
-## Learn More
+## 📦 Dépendances principales
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **React 18** - Framework UI
+- **React Router v7** - Navigation
+- **Axios** - Client HTTP
+- **jwt-decode** - Décodage des tokens JWT
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🛠️ Scripts disponibles
 
-### Code Splitting
+| Commande | Description |
+|----------|-------------|
+| `npm start` | Démarre le serveur de développement |
+| `npm run build` | Build de production |
+| `npm test` | Lance les tests |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📡 API Backend
 
-### Analyzing the Bundle Size
+Le frontend communique avec les endpoints suivants:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Authentification
+- `POST /api/auth/login` - Connexion
+- `POST /api/auth/register-self` - Auto-inscription
+- `POST /api/auth/change-password` - Changement de mot de passe
+- `POST /api/auth/create-client` - Création client (Agent)
 
-### Making a Progressive Web App
+### Utilisateurs
+- `GET /api/users/me` - Profil utilisateur
+- `GET /api/users/clients` - Liste des clients (Agent)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Dashboard
+- `GET /api/dashboard` - Dashboard client
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Comptes
+- `POST /api/accounts/deposit` - Dépôt
+- `POST /api/accounts/withdraw` - Retrait
+- `POST /api/accounts/transfer` - Virement
+- `GET /api/accounts/{rib}/operations` - Historique
+- `PATCH /api/accounts/{rib}/block` - Bloquer (Agent)
+- `PATCH /api/accounts/{rib}/unblock` - Débloquer (Agent)
+- `PATCH /api/accounts/{rib}/close` - Clôturer (Agent)

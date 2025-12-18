@@ -32,12 +32,22 @@ public class UserService {
             throw new RuntimeException("Username already exists");
         }
 
+        if (userRepository.existsByIdentityNumber(request.getIdentityNumber())) {
+            throw new RuntimeException("Identity number already exists");
+        }
+
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new RuntimeException("Email already exists");
+        }
+
         Role roleClient = roleRepository.findByName("ROLE_CLIENT")
                 .orElseThrow(() -> new RuntimeException("Role not found"));
 
         User user = User.builder()
-                .username(request.getUsername())
+                .username(request.getUsername()) // email de login
                 .password(passwordEncoder.encode(request.getPassword()))
+                .identityNumber(request.getIdentityNumber())
+                .email(request.getEmail())
                 .firstLogin(false)
                 .roles(Set.of(roleClient))
                 .accounts(new HashSet<>())
@@ -48,6 +58,7 @@ public class UserService {
 
         return user;
     }
+
 
     // =========================
     // AGENT CREATES CLIENT (UC-2)
